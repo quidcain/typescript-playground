@@ -3,7 +3,7 @@ type User = {
   lastName: string;
 }
 
-function acceptUser(user: User) {
+function acceptUser<T extends User>(user: T) {
   console.log(user);
 }
 
@@ -22,4 +22,4 @@ acceptUser({
   name: 'Andrei',
   lastName: 'Jordan',
   role: 'CEO',
-} as User)
+})

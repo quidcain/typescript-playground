@@ -22,4 +22,4 @@ acceptUser({
   name: 'Andrei',
   lastName: 'Jordan',
   role: 'CEO',
-})
+} as User)

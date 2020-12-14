@@ -26,7 +26,6 @@ const structuralTyping = () => {
   })
 }
 
-
 const howAnyAndVoidWorks = () => {
   const identity = (x: any) => x;
   const foo: (value: string) => void = identity;
@@ -37,3 +36,16 @@ const howAnyAndVoidWorks = () => {
   const identity2 = (x: string): number => parseInt(x);
   const bar: (value: string) => void = identity2;
 };
+
+const wrapperObjectsAndTypeHierarchy = () => {
+  const N: object = new Number(1);
+  const n: number = 1;
+  //number doesn't extend object
+  const N2: object = 2;
+  //Number wrapper object is not assignable to number
+  //typescript do's and don'ts:
+  //Don’t ever use the types Number, String, Boolean, Symbol,
+  //or Object These types refer to non-primitive boxed objects
+  //that are almost never used appropriately in JavaScript code
+  const n2: number = N;
+}

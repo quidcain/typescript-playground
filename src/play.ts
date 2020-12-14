@@ -49,3 +49,30 @@ const wrapperObjectsAndTypeHierarchy = () => {
   //that are almost never used appropriately in JavaScript code
   const n2: number = N;
 }
+
+const pecs = () => {
+  class Base {}
+  class Derived extends Base {
+    method() {
+      return 'derived';
+    }
+  }
+  class Derived2 extends Base {}
+  class NotDerived {}
+
+  let d = new Derived;
+  let b: Base = d;
+
+  const baseArr: Base[] = [new Derived(), new Derived(), new Derived()];
+  baseArr[0].method();
+
+  function addToArr<T extends Base>(arr: T[], item: T) {
+    arr.push(item);
+    return arr;
+  }
+  const derivedArr: Derived[] = [new Derived(), new Derived(), new Derived()];
+  derivedArr[0].method();
+  addToArr(derivedArr, new Derived2());
+  console.log(derivedArr[3].method());
+}
+pecs();

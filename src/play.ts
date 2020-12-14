@@ -1,4 +1,4 @@
-const structuralTyping = () => {
+const objectsTyping = () => {
   type User = {
     name: string;
     lastName: string;
@@ -76,3 +76,36 @@ const pecs = () => {
   console.log(derivedArr[3].method());
 }
 pecs();
+
+const typeCompatibility = () => {
+  class UserClass {
+    name: string;
+    lastName: string;
+
+    constructor(name: string, lastName: string) {
+      this.name = name;
+      this.lastName = name;
+    }
+
+    getFullName() {
+      return `${this.name} ${this.lastName}`;
+    }
+  }
+  type UserType = {
+    name: string;
+    lastName: string;
+  }
+  const userClass1 = new UserClass('Ivan', 'Ivanov');
+  const userType1: UserType = userClass1;
+
+  const userType2: UserClass = {
+    name: 'Oleh',
+    lastName: 'Ivanov',
+  };
+
+  const userType3: UserType = {
+    name: 'Oleh',
+    lastName: 'Ivanov',
+  };
+  const userClass3: UserClass = userType3;
+};

@@ -4,7 +4,10 @@ const objectsTyping = () => {
     lastName: string;
   }
 
-  function acceptUser<T extends User>(user: T) {
+  function acceptUser(user: User) {
+    console.log(user);
+  }
+  function acceptUserLike<T extends User>(user: T) {
     console.log(user);
   }
 
@@ -23,7 +26,19 @@ const objectsTyping = () => {
     name: 'Andrei',
     lastName: 'Jordan',
     role: 'CEO',
-  })
+  });
+  acceptUserLike({
+    name: 'Andrei',
+    lastName: 'Jordan',
+    role: 'CEO',
+  });
+  const andreiJ = {
+    name: 'Andrei',
+    lastName: 'Jordan',
+    role: 'CEO',
+  };
+  //wow. This is really only related to object literals
+  acceptUserLike(andreiJ);
 }
 
 const howAnyAndVoidWorks = () => {
